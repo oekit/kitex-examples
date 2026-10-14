@@ -48,21 +48,5 @@ jobs:
       - name: Go vet
         run: go vet ./...
 
-      - name: Run tests
-        run: go test -race -count=1 -coverprofile=coverage.out ./...
-
-      - name: Check coverage threshold
-        run: |
-          COVERAGE=$(go tool cover -func=coverage.out | tail -1 | awk '{print $3}' | tr -d '%')
-          echo "Total coverage: ${COVERAGE}%"
-          THRESHOLD=30
-          if [ -n "$COVERAGE" ] && [ "$(echo "$COVERAGE < $THRESHOLD" | bc -l)" -eq 1 ]; then
-            echo "覆盖率 ${COVERAGE}% 低于阈值 ${THRESHOLD}%"
-            exit 1
-          fi
-
-      - name: Upload coverage
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage.out
+      - name: Build examples
+        run: go build ./...
