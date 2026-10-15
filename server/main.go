@@ -7,6 +7,8 @@ import (
 	"time"
 
 	"github.com/oekit/bootstrap/bootstrap"
+	bootstrapnacos "github.com/oekit/bootstrap/nacos"
+	bootstrapobs "github.com/oekit/bootstrap/obs"
 	ekitkitex "github.com/oekit/kitex/kitex"
 	registrykitex "github.com/oekit/kitex/registry/kitex"
 	"github.com/oekit/logx"
@@ -35,12 +37,17 @@ func main() {
 		os.Exit(1)
 	}
 
-	if err := bootstrap.Run(bootstrap.Config{
-		ServiceName: cfg.ServiceName,
-		Port:        cfg.RpcPort,
-		Nacos:       cfg.Nacos,
-		Tracing:     &cfg.Tracing,
-	}, func(app *bootstrap.App) error {
+	b, err := bootstrap.New(
+		bootstrap.WithServiceName(cfg.ServiceName),
+		bootstrapnacos.WithNNS(cfg.Nacos, cfg.RpcPort, nil), // Nacos 注册（嵌套 module 按需注入）
+		bootstrapobs.WithTracing(cfg.Tracing),
+	)
+	if err != nil {
+		logx.Error("bootstrap init failed", "err", err)
+		os.Exit(1)
+	}
+
+	if err := b.Run(func(app *bootstrap.App) error {
 		// 1. 日志桥接（必须传 slog 实例避免无限递归）
 		klog.SetLogger(ekitkitex.NewLogger(logx.NewSlogLogger(cfg.ServiceName)))
 
