@@ -4,10 +4,10 @@ import (
 	"context"
 	"os"
 
+	"github.com/oekit/core/config"
 	ekitkitex "github.com/oekit/kitex/kitex"
 	registrykitex "github.com/oekit/kitex/registry/kitex"
 	"github.com/oekit/logx"
-	"github.com/oekit/core/config"
 	"github.com/oekit/registry/nacos"
 	nacosimpl "github.com/oekit/registry/registry/nacos"
 	"github.com/oekit/tracing"
