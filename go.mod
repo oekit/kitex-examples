@@ -3,7 +3,7 @@ module github.com/oekit/kitex-examples
 go 1.26.0
 
 require (
-	github.com/cloudwego/gopkg v0.2.0
+	github.com/cloudwego/gopkg v0.2.1
 	github.com/cloudwego/kitex v0.16.3
 	github.com/oekit/bootstrap v0.4.1
 	github.com/oekit/bootstrap/nacos v0.1.0
