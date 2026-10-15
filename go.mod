@@ -5,13 +5,14 @@ go 1.26.0
 require (
 	github.com/cloudwego/gopkg v0.2.0
 	github.com/cloudwego/kitex v0.16.3
-	github.com/oekit/bootstrap v0.4.0
-	github.com/oekit/logx v0.1.6
-	github.com/oekit/registry v0.2.5
+	github.com/oekit/bootstrap v0.4.1
+	github.com/oekit/bootstrap/nacos v0.1.0
+	github.com/oekit/bootstrap/obs v0.1.0
+	github.com/oekit/kitex v0.3.9
+	github.com/oekit/logx v0.1.9
+	github.com/oekit/registry v0.2.6
 	github.com/oekit/tracing v0.1.5
 )
-
-require github.com/oekit/errors v0.1.2 // indirect
 
 require (
 	github.com/alibabacloud-go/alibabacloud-gateway-pop v0.0.6 // indirect
@@ -72,13 +73,11 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/nacos-group/nacos-sdk-go/v2 v2.3.6-0.20260601044846-0e3d1d099507 // indirect
-	github.com/oekit/bootstrap/nacos v0.1.0
-	github.com/oekit/bootstrap/obs v0.1.0
-	github.com/oekit/concurrency v0.1.3 // indirect
-	github.com/oekit/core v0.3.2 // indirect
-	github.com/oekit/kitex v0.3.4
-	github.com/oekit/metrics v0.1.4 // indirect
-	github.com/oekit/nns v0.3.2 // indirect
+	github.com/oekit/concurrency v0.1.5 // indirect
+	github.com/oekit/core v0.3.3 // indirect
+	github.com/oekit/metrics v0.1.5 // indirect
+	github.com/oekit/nns v0.3.3 // indirect
+	github.com/oekit/pkg v0.1.3 // indirect
 	github.com/orcaman/concurrent-map v0.0.0-20210501183033-44dafcb38ecc // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.24.1 // indirect
