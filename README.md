@@ -3,7 +3,7 @@
 > Kitex echo 示例——client/server + Thrift IDL + 治理配置样例。
 
 本仓库是 [ekit](https://git.enjoye.top/enjoydream/ekit) 拆分矩阵的成员（Round-3 自 ekit-kitex 迁出），
-使 [ekit-kitex](https://github.com/yi-nology/ekit-kitex) 主模块不再依赖 bootstrap 全链。
+使 [ekit-kitex](https://github.com/oekit/kitex) 主模块不再依赖 bootstrap 全链。
 
 ## 结构
 
@@ -19,7 +19,7 @@ go run ./server    # 先起 server（注册到 Nacos / mock 模式）
 go run ./client
 ```
 
-依赖：[ekit-kitex](https://github.com/yi-nology/ekit-kitex)、[ekit-bootstrap](https://github.com/yi-nology/ekit-bootstrap)、[ekit-registry](https://github.com/yi-nology/ekit-registry)、[ekit-logx](https://github.com/yi-nology/ekit-logx)、[ekit-tracing](https://github.com/yi-nology/ekit-tracing)。
+依赖：[ekit-kitex](https://github.com/oekit/kitex)、[ekit-bootstrap](https://github.com/oekit/bootstrap)、[ekit-registry](https://github.com/oekit/registry)、[ekit-logx](https://github.com/oekit/logx)、[ekit-tracing](https://github.com/oekit/tracing)。
 
 ## License
 

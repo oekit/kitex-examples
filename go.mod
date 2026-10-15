@@ -1,17 +1,17 @@
-module github.com/yi-nology/ekit-kitex-examples
+module github.com/oekit/kitex-examples
 
 go 1.26.0
 
 require (
 	github.com/cloudwego/gopkg v0.2.0
 	github.com/cloudwego/kitex v0.16.3
-	github.com/yi-nology/ekit-bootstrap v0.2.3
-	github.com/yi-nology/ekit-logx v0.1.4
-	github.com/yi-nology/ekit-registry v0.2.2
-	github.com/yi-nology/ekit-tracing v0.1.2
+	github.com/oekit/bootstrap v0.2.4
+	github.com/oekit/logx v0.1.6
+	github.com/oekit/registry v0.2.5
+	github.com/oekit/tracing v0.1.5
 )
 
-require github.com/yi-nology/ekit-errors v0.1.0 // indirect
+require github.com/oekit/errors v0.1.2 // indirect
 
 require (
 	github.com/alibabacloud-go/alibabacloud-gateway-pop v0.0.6 // indirect
@@ -72,6 +72,11 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/nacos-group/nacos-sdk-go/v2 v2.3.6-0.20260601044846-0e3d1d099507 // indirect
+	github.com/oekit/concurrency v0.1.3 // indirect
+	github.com/oekit/core v0.3.2 // indirect
+	github.com/oekit/kitex v0.3.4
+	github.com/oekit/metrics v0.1.4 // indirect
+	github.com/oekit/nns v0.3.2 // indirect
 	github.com/orcaman/concurrent-map v0.0.0-20210501183033-44dafcb38ecc // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.24.1 // indirect
@@ -84,11 +89,6 @@ require (
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
-	github.com/yi-nology/ekit-concurrency v0.1.1 // indirect
-	github.com/yi-nology/ekit-core v0.3.0 // indirect
-	github.com/yi-nology/ekit-kitex v0.3.3
-	github.com/yi-nology/ekit-metrics v0.1.2 // indirect
-	github.com/yi-nology/ekit-nns v0.3.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/runtime v0.62.0 // indirect
 	go.opentelemetry.io/contrib/propagators/b3 v1.28.0 // indirect

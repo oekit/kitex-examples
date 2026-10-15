@@ -4,18 +4,18 @@ import (
 	"context"
 	"os"
 
-	ekitkitex "github.com/yi-nology/ekit-kitex/kitex"
-	registrykitex "github.com/yi-nology/ekit-kitex/registry/kitex"
-	"github.com/yi-nology/ekit-logx"
-	"github.com/yi-nology/ekit-registry/config"
-	"github.com/yi-nology/ekit-registry/nacos"
-	nacosimpl "github.com/yi-nology/ekit-registry/registry/nacos"
-	"github.com/yi-nology/ekit-tracing"
+	ekitkitex "github.com/oekit/kitex/kitex"
+	registrykitex "github.com/oekit/kitex/registry/kitex"
+	"github.com/oekit/logx"
+	"github.com/oekit/registry/config"
+	"github.com/oekit/registry/nacos"
+	nacosimpl "github.com/oekit/registry/registry/nacos"
+	"github.com/oekit/tracing"
 
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/klog"
-	echo "github.com/yi-nology/ekit-kitex-examples/kitex_gen/kitex/echo"
-	"github.com/yi-nology/ekit-kitex-examples/kitex_gen/kitex/echo/echoservice"
+	echo "github.com/oekit/kitex-examples/kitex_gen/kitex/echo"
+	"github.com/oekit/kitex-examples/kitex_gen/kitex/echo/echoservice"
 )
 
 type AppConfig struct {

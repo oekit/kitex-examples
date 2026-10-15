@@ -3,7 +3,7 @@ package echoservice
 
 import (
 	server "github.com/cloudwego/kitex/server"
-	echo "github.com/yi-nology/ekit-kitex-examples/kitex_gen/kitex/echo"
+	echo "github.com/oekit/kitex-examples/kitex_gen/kitex/echo"
 )
 
 // NewServer creates a server.Server with the given handler and options.
