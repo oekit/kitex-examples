@@ -2,7 +2,7 @@
 
 > Kitex echo 示例——client/server + Thrift IDL + 治理配置样例。
 
-> 项目主页：**https://oekit.github.io/oekit/** · 名称由来：**O**pen **E**asy **Kit**（开源 · 易用 · 工具集合）
+> 项目主页：**https://oekit.github.io/** · 名称由来：**O**pen **E**asy **Kit**（开源 · 易用 · 工具集合）
 
 本仓库是 [ekit](https://git.enjoye.top/enjoydream/ekit) 拆分矩阵的成员（Round-3 自 ekit-kitex 迁出），
 使 [ekit-kitex](https://github.com/oekit/kitex) 主模块不再依赖 bootstrap 全链。
