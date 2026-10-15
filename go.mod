@@ -9,7 +9,7 @@ require (
 	github.com/oekit/bootstrap/nacos v0.1.0
 	github.com/oekit/bootstrap/obs v0.1.0
 	github.com/oekit/core v0.4.0
-	github.com/oekit/kitex v0.3.9
+	github.com/oekit/kitex v0.4.1
 	github.com/oekit/logx v0.1.9
 	github.com/oekit/registry v0.3.0
 	github.com/oekit/tracing v0.2.0
