@@ -11,7 +11,7 @@ require (
 	github.com/oekit/kitex v0.3.9
 	github.com/oekit/logx v0.1.9
 	github.com/oekit/registry v0.2.6
-	github.com/oekit/tracing v0.1.5
+	github.com/oekit/tracing v0.2.0
 )
 
 require (
