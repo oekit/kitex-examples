@@ -8,6 +8,22 @@
 本仓库是 [ekit](https://git.enjoye.top/enjoydream/ekit) 拆分矩阵的成员（Round-3 自 ekit-kitex 迁出），
 使 [ekit-kitex](https://github.com/oekit/kitex) 主模块不再依赖 bootstrap 全链。
 
+## 能做什么
+
+- **真实 codegen**：thrift IDL → kitex_gen，业务实现 EchoService 接口
+- **双端齐备**：server（Kitex Registry 注册）+ client（Discoverer 发现）
+- **治理样例**：configs/ 下 retry/rpc_timeout/limit JSON 样例
+- **零 Nacos 也能跑**：mock/静态实例配置
+
+## 使用示例
+
+### 运行
+```bash
+go run ./server  # 先起 server
+go run ./client  # 再起 client
+```
+IDL 在 `idl/echo.thrift`，改完用 kitex 工具重新生成 `kitex_gen`。
+
 ## 结构
 
 - `kitex_gen/` — thrift 生成的 echo 服务代码
