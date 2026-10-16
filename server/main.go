@@ -13,6 +13,7 @@ import (
 	ekitkitex "github.com/oekit/kitex/kitex"
 	registrykitex "github.com/oekit/kitex/registry/kitex"
 	"github.com/oekit/logx"
+	kitexlog "github.com/oekit/logx/kitexlog"
 	"github.com/oekit/registry/nacos"
 	nacosimpl "github.com/oekit/registry/registry/nacos"
 	"github.com/oekit/tracing"
@@ -49,7 +50,8 @@ func main() {
 
 	if err := b.Run(func(app *bootstrap.App) error {
 		// 1. 日志桥接（必须传 slog 实例避免无限递归）
-		klog.SetLogger(ekitkitex.NewLogger(logx.NewSlogLogger(cfg.ServiceName)))
+		// kitex.NewLogger 已弃用（v0.x 起桥接至 logx/kitexlog），示例直接用新 API
+		klog.SetLogger(kitexlog.NewLogger(logx.NewSlogLogger(cfg.ServiceName)))
 
 		// 2. 创建 Nacos naming client → ekit Registrar → Kitex Registry
 		namingCli, err := nacos.NewNamingClient(cfg.Nacos)
