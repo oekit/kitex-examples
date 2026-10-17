@@ -2,6 +2,10 @@
 
 由 ekit v0.34.0（git.enjoye.top/enjoydream/ekit，冻结维护）拆分而来。所有 notable 变更记录如下。
 
+## [v0.1.14] — 2026-10-17
+
+- pkg 地板 v0.11.0；kitex v0.5.5、concurrency v0.5.4 地板跟随
+
 ## [v0.1.13] — 2026-10-17
 
 - fix(deps): 地板跟随——kitex v0.5.4、concurrency v0.5.3（pkg 随 kitex 链至 v0.10.0）
