@@ -5,12 +5,12 @@ import (
 	"os"
 
 	"github.com/oekit/core/config"
-	ekitkitex "github.com/oekit/kitex/kitex"
+	kitexgo "github.com/oekit/kitex"
 	registrykitex "github.com/oekit/kitex/registry/kitex"
 	"github.com/oekit/logx"
 	kitexlog "github.com/oekit/logx/kitexlog"
 	"github.com/oekit/registry/nacos"
-	nacosimpl "github.com/oekit/registry/registry/nacos"
+	nacosimpl "github.com/oekit/registry/nacosimpl"
 	"github.com/oekit/tracing"
 
 	"github.com/cloudwego/kitex/client"
@@ -52,7 +52,7 @@ func main() {
 	// 3. 创建 Kitex client（带服务发现 + 可观测性）
 	cli, err := echoservice.NewClient(cfg.TargetServer,
 		client.WithResolver(registrykitex.NewResolver(disc)),
-		client.WithSuite(ekitkitex.NewClientTracingSuite()),
+		client.WithSuite(kitexgo.NewClientTracingSuite()),
 	)
 	if err != nil {
 		logx.Error("create client failed", "err", err)

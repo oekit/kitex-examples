@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"net"
 	"os"
 	"time"
@@ -10,12 +11,12 @@ import (
 	bootstrapnacos "github.com/oekit/bootstrap/nacos"
 	bootstrapobs "github.com/oekit/bootstrap/obs"
 	"github.com/oekit/core/config"
-	ekitkitex "github.com/oekit/kitex/kitex"
+	kitexgo "github.com/oekit/kitex"
 	registrykitex "github.com/oekit/kitex/registry/kitex"
 	"github.com/oekit/logx"
 	kitexlog "github.com/oekit/logx/kitexlog"
 	"github.com/oekit/registry/nacos"
-	nacosimpl "github.com/oekit/registry/registry/nacos"
+	nacosimpl "github.com/oekit/registry/nacosimpl"
 	"github.com/oekit/tracing"
 
 	"github.com/cloudwego/kitex/pkg/klog"
@@ -70,11 +71,16 @@ func main() {
 		svr := echoservice.NewServer(handler,
 			server.WithRegistry(registrykitex.NewRegistry(reg)),
 			server.WithServiceAddr(addr),
-			server.WithSuite(ekitkitex.NewServerTracingSuite()),
+			server.WithSuite(kitexgo.NewServerTracingSuite()),
 		)
 
 		// 4. 注册到 bootstrap 生命周期
-		ekitkitex.RunServer(app, "kitex-echo", svr)
+		// WithOnReady + WithReadyAddr：TCP 探活通过后触发 app.Ready()——
+		// bootstrap/nacos v0.3.0 起服务注册延迟到就绪门之后（server 可建连
+		// 才进注册中心），关停时反注册先于 server 关闭执行
+		kitexgo.RunServer(app, "kitex-echo", svr,
+			kitexgo.WithOnReady(func(ctx context.Context) { app.Ready() }),
+			kitexgo.WithReadyAddr(fmt.Sprintf(":%d", cfg.RpcPort)))
 
 		// 阻塞等待退出信号:必须阻塞在 app ctx 上——RunServer 启动失败时
 		// 的 RequestShutdown 只 cancel ctx,依赖 userFn 从 <-Done() 返回才
