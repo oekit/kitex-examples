@@ -1,6 +1,6 @@
 module github.com/oekit/kitex-examples
 
-go 1.26.0
+go 1.24.0
 
 require (
 	github.com/cloudwego/gopkg v0.2.1
