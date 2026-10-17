@@ -2,6 +2,8 @@
 
 由 ekit v0.34.0（git.enjoye.top/enjoydream/ekit，冻结维护）拆分而来。所有 notable 变更记录如下。
 
+## [- fix(deps): kitex vv0.6.2、middleware vv0.7.2、metrics vv0.1.7、tracing vv0.2.2 地板对齐（零代码改动）
+
 ## [v0.1.15] — 2026-10-17
 
 - bootstrap v0.5.3（nacos/obs v0.2.5）、kitex v0.5.6、nns v0.3.5 地板跟随
