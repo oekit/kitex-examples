@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/oekit/bootstrap/bootstrap"
+	"github.com/oekit/bootstrap"
 	bootstrapnacos "github.com/oekit/bootstrap/nacos"
 	bootstrapobs "github.com/oekit/bootstrap/obs"
 	"github.com/oekit/core/config"

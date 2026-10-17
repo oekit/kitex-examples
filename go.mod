@@ -5,12 +5,13 @@ go 1.26.0
 require (
 	github.com/cloudwego/gopkg v0.2.1
 	github.com/cloudwego/kitex v0.16.4
-	github.com/oekit/bootstrap v0.4.1
-	github.com/oekit/bootstrap/nacos v0.1.0
-	github.com/oekit/bootstrap/obs v0.1.0
+	github.com/oekit/bootstrap v0.5.0
+	github.com/oekit/bootstrap/nacos v0.2.0
+	github.com/oekit/bootstrap/obs v0.2.0
 	github.com/oekit/core v0.4.0
-	github.com/oekit/kitex v0.5.0
+	github.com/oekit/kitex v0.5.1
 	github.com/oekit/logx v0.2.0
+	github.com/oekit/logx/kitexlog v0.1.0
 	github.com/oekit/registry v0.3.0
 	github.com/oekit/tracing v0.2.0
 )
@@ -75,7 +76,6 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/nacos-group/nacos-sdk-go/v2 v2.3.6-0.20260601044846-0e3d1d099507 // indirect
 	github.com/oekit/concurrency v0.1.5 // indirect
-	github.com/oekit/logx/kitexlog v0.1.0 // indirect
 	github.com/oekit/metrics v0.1.5 // indirect
 	github.com/oekit/nns v0.3.3 // indirect
 	github.com/oekit/pkg v0.1.3 // indirect
