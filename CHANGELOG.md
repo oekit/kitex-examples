@@ -2,6 +2,10 @@
 
 由 ekit v0.34.0（git.enjoye.top/enjoydream/ekit，冻结维护）拆分而来。所有 notable 变更记录如下。
 
+## [v0.1.11] — 2026-10-17
+
+- fix(deps): 内部地板跟随修复版——bootstrap v0.5.2（nacos/obs v0.2.2，lifecycle 迁移）、kitex v0.5.3
+
 ## [v0.1.10] — 2026-10-17
 
 - fix(deps): 内部依赖地板全量对齐最新——bootstrap v0.5.1（nacos/obs v0.2.1）、kitex v0.5.2、core v0.6.0、logx v0.5.0（kitexlog v0.1.1）、registry v0.3.1、tracing v0.2.1；go 维持 1.26.0（kitex/OTel 生态传导）
