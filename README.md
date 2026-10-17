@@ -8,7 +8,7 @@
 ## 安装
 
 ```bash
-go get github.com/oekit/kitex-examples@v0.1.11
+go get github.com/oekit/kitex-examples@v0.1.12
 ```
 
 ## 这个仓库做什么
