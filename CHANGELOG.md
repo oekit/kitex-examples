@@ -2,7 +2,13 @@
 
 由 ekit v0.34.0（git.enjoye.top/enjoydream/ekit，冻结维护）拆分而来。所有 notable 变更记录如下。
 
-## [- fix(deps): kitex vv0.6.2、middleware vv0.7.2、metrics vv0.1.7、tracing vv0.2.2 地板对齐（零代码改动）
+## [v0.1.17] — 2026-10-18
+
+- fix(deps): kitex v0.6.2、tracing v0.2.2、metrics v0.1.7（indirect）地板对齐（零代码改动）
+
+## [v0.1.16] — 2026-10-18
+
+- 示例 import 迁移至扁平化路径（kitex/registry/nns 包提升至模块根）+ ready-gate 延迟注册演示更新；fix(deps): 地板跟随——bootstrap v0.6.1（nacos v0.3.1）、kitex v0.6.1、core v0.7.0、logx v0.6.0、registry v0.4.1、nns v0.4.1（indirect）
 
 ## [v0.1.15] — 2026-10-17
 
