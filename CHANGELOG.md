@@ -2,6 +2,10 @@
 
 由 ekit v0.34.0（git.enjoye.top/enjoydream/ekit，冻结维护）拆分而来。所有 notable 变更记录如下。
 
+## [v0.1.20] — 2026-10-22
+
+- build(deps): 嵌套模块地板对齐——bootstrap/nacos v0.3.1 → v0.3.5、bootstrap/obs v0.2.5 → v0.2.9、logx/kitexlog v0.1.1 → v0.1.4（传递地板随 MVS 上抬：bootstrap v0.6.4、tracing v0.2.3、concurrency v0.17.1、pkg v0.15.1、metrics v0.1.8、nns v0.4.3；零代码改动）
+
 ## [v0.1.19] — 2026-10-21
 
 - 改用嵌套模块 registry/nacos 与 registry/nacosimpl——registry v0.5.0 起不再提供这两个子包（import 路径不变，由独立 module 提供）
