@@ -1,7 +1,7 @@
 # AGENTS.md — oekit/kitex-examples
 
 > Kitex echo 示例——client/server + IDL + 治理配置
-> 当前版本：`v0.1.20` · module：`github.com/oekit/kitex-examples` · org：[oekit = Open Easy Kit](https://oekit.github.io)
+> 当前版本：`v0.1.21` · module：`github.com/oekit/kitex-examples` · org：[oekit = Open Easy Kit](https://oekit.github.io)
 
 ## 本仓包含
 `client/`、`kitex_gen/kitex/echo/`、`kitex_gen/kitex/echo/echoservice/`、`server/`
