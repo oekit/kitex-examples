@@ -12,6 +12,7 @@ import (
 	bootstrapobs "github.com/oekit/bootstrap/obs"
 	"github.com/oekit/core/config"
 	kitexgo "github.com/oekit/kitex"
+	kitexotel "github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel"
 	registrykitex "github.com/oekit/kitex/registry/kitex"
 	"github.com/oekit/logx"
 	kitexlog "github.com/oekit/logx/kitexlog"
@@ -71,7 +72,7 @@ func main() {
 		svr := echoservice.NewServer(handler,
 			server.WithRegistry(registrykitex.NewRegistry(reg)),
 			server.WithServiceAddr(addr),
-			server.WithSuite(kitexgo.NewServerTracingSuite()),
+			server.WithSuite(kitexotel.NewServerTracingSuite()),
 		)
 
 		// 4. 注册到 bootstrap 生命周期
