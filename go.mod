@@ -5,17 +5,17 @@ go 1.26.0
 require (
 	github.com/cloudwego/gopkg v0.2.1
 	github.com/cloudwego/kitex v0.16.4
-	github.com/oekit/bootstrap v0.6.4
+	github.com/oekit/bootstrap v0.6.5
 	github.com/oekit/bootstrap/nacos v0.3.5
 	github.com/oekit/bootstrap/obs v0.2.9
-	github.com/oekit/core v0.9.2
-	github.com/oekit/kitex v0.7.0
+	github.com/oekit/core v0.12.1
+	github.com/oekit/kitex v0.7.1
 	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.1.0
-	github.com/oekit/logx v0.7.1
+	github.com/oekit/logx v0.8.0
 	github.com/oekit/logx/kitexlog v0.1.4
 	github.com/oekit/registry/nacos v0.1.0
 	github.com/oekit/registry/nacosimpl v0.1.0
-	github.com/oekit/tracing v0.2.3
+	github.com/oekit/tracing v0.3.1
 )
 
 require (
@@ -100,8 +100,10 @@ require (
 	go.opentelemetry.io/contrib/propagators/ot v1.47.0 // indirect
 	go.opentelemetry.io/otel v1.47.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc v1.47.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp v1.47.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.47.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.47.0 // indirect
+	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.47.0 // indirect
 	go.opentelemetry.io/otel/log v1.47.0 // indirect
 	go.opentelemetry.io/otel/metric v1.47.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.47.0 // indirect
