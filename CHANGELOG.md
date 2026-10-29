@@ -2,6 +2,10 @@
 
 由 ekit v0.34.0（git.enjoye.top/enjoydream/ekit，冻结维护）拆分而来。所有 notable 变更记录如下。
 
+## [v0.1.22] — 2026-10-30
+
+- build: 矩阵内依赖地板 `tracing` v0.3.1 → v0.3.2（维护轮全量对齐；本版不含 API 变更）
+
 ## [v0.1.21] — 2026-10-24
 
 - 跟随 kitex v0.7.0——tracing suite 改由嵌套模块 kitexotel 提供（kitex 根包 NewServerTracingSuite / NewClientTracingSuite 已迁入 kitexotel；#37）
