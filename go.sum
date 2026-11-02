@@ -218,12 +218,12 @@ github.com/oekit/bootstrap/nacos v0.3.7 h1:ekJ6e9c4VSyz7Rsy13NwORdPJNo7GbXFW72nc
 github.com/oekit/bootstrap/nacos v0.3.7/go.mod h1:wtJRK898PDaCdXENtKQFZiCleBLVG16BeEqNC1tyv/Y=
 github.com/oekit/bootstrap/obs v0.2.10 h1:SsjzFHySxX9y5agRdH9raMM4em9ITNjD8gUgGkwj3k4=
 github.com/oekit/bootstrap/obs v0.2.10/go.mod h1:VNQDgP3KoxLP8UTAuVGfLOm0apI5SEGIM0pI2StuJk0=
-github.com/oekit/concurrency v0.23.2 h1:1iMfoBe7ti6//IRJoyBlokhUKW0tSEvrQIvb3lEXyvI=
-github.com/oekit/concurrency v0.23.2/go.mod h1:eLMEfucIyKs1cLGK4+lKRQCf3Fgb6EE/mkpPXFMRuMA=
+github.com/oekit/concurrency v0.23.3 h1:9bpofW5VrMWFXyOCwOie/BxIB6RruBD745IG/OU+IKE=
+github.com/oekit/concurrency v0.23.3/go.mod h1:WsSHSOSeVCwK89//4lqvpy/ZKvxolm2IktV+6lPLjCA=
 github.com/oekit/core v0.12.1 h1:RPSr6AdWl3SpFzZ+w2a4C+nhvZr1NSNt8WNjtGotnM0=
 github.com/oekit/core v0.12.1/go.mod h1:HhBTwYHU5MUp9tfNvHjfZv6P4yglQmn4jKmz98dUIsM=
-github.com/oekit/kitex v0.7.3 h1:m9xxGRG6cSyeGkfkuH0TmCU9qQ5fRYCKogrnhh1oQpg=
-github.com/oekit/kitex v0.7.3/go.mod h1:0Zp+N5UmFp5LcaQY14tcV3GlyvfpeFEj8KLcA9XGli4=
+github.com/oekit/kitex v0.7.4 h1:G00r4Qhd5iHG4Y+PeYgNReKjxNKL80AAG0V2rW+MwEM=
+github.com/oekit/kitex v0.7.4/go.mod h1:TaMj+D3+QInXnZtwwdW0TSoGPcp6gQ9nDzbQjTLznCg=
 github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.0 h1:YKMCk5GXxer1d2/pz5Y+vf4nj6iY+RKYEXbOc6SHlRs=
 github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.0/go.mod h1:64k0srl76OOxkXT3ntKnIVB10xDFfSvLZSsJxaTDcsY=
 github.com/oekit/logx v0.8.0 h1:S0KQOiI6h4GGktsv0fl1KtHBcOGZZgj6M6cUCLRk41E=
