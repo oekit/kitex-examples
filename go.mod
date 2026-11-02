@@ -79,7 +79,7 @@ require (
 	github.com/nacos-group/nacos-sdk-go/v2 v2.3.6-0.20260601044846-0e3d1d099507 // indirect
 	github.com/oekit/concurrency v0.23.3 // indirect
 	github.com/oekit/metrics v0.1.10 // indirect
-	github.com/oekit/nns v0.5.5 // indirect
+	github.com/oekit/nns v0.5.6 // indirect
 	github.com/oekit/pkg v0.31.1 // indirect
 	github.com/oekit/registry v0.5.1 // indirect
 	github.com/orcaman/concurrent-map v0.0.0-20210501183033-44dafcb38ecc // indirect
