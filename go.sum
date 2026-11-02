@@ -214,10 +214,10 @@ github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e/go.mod h1:zD1mROLA
 github.com/nishanths/predeclared v0.0.0-20200524104333-86fad755b4d3/go.mod h1:nt3d53pc1VYcphSCIaYAJtnPYnr3Zyn8fMq2wvPGPso=
 github.com/oekit/bootstrap v0.6.8 h1:zwlF3I8XyWFBFUugSrV6SZGeVIa9O2Q1SACziz2e7/Y=
 github.com/oekit/bootstrap v0.6.8/go.mod h1:dXP00FI/U76pMLGxEvciTDlLc2pJW3HRk903mVYGqAk=
-github.com/oekit/bootstrap/nacos v0.3.9 h1:YA0zgMCVd9dpiZe/DEckayKYjUk418XWUAdxGETT5II=
-github.com/oekit/bootstrap/nacos v0.3.9/go.mod h1:mYjRmI+NB6zzUSUxZAU7BBx5W0s8c7lDhGEcwsOu4HI=
-github.com/oekit/bootstrap/obs v0.2.13 h1:ybsPkh4xGPxzuPhhqOrljq4HNua5hbhPPVACWAdJU2k=
-github.com/oekit/bootstrap/obs v0.2.13/go.mod h1:fkyr7oq4x51sUX1WN2RLYirO4uxpLTX/A3vvfPiI0zw=
+github.com/oekit/bootstrap/nacos v0.3.10 h1:fxfjN3UVTNczUZsjQV05JK5dH8AavmI24P2siUeQB7s=
+github.com/oekit/bootstrap/nacos v0.3.10/go.mod h1:WBtMRk+HTvOvAjMQ+XoHvrAhR3S+AZTqaKyKs6KdqE8=
+github.com/oekit/bootstrap/obs v0.2.14 h1:XNXZG7Rosx2iylGXLKVs9weDmHdE7WyQyUQ/9kVc9e4=
+github.com/oekit/bootstrap/obs v0.2.14/go.mod h1:jsVzb4LpMkAR5D3IL5sQB7Quv9KdDCiH981K2VzW2Jg=
 github.com/oekit/concurrency v0.23.3 h1:9bpofW5VrMWFXyOCwOie/BxIB6RruBD745IG/OU+IKE=
 github.com/oekit/concurrency v0.23.3/go.mod h1:WsSHSOSeVCwK89//4lqvpy/ZKvxolm2IktV+6lPLjCA=
 github.com/oekit/core v0.12.1 h1:RPSr6AdWl3SpFzZ+w2a4C+nhvZr1NSNt8WNjtGotnM0=
