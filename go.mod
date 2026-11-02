@@ -12,9 +12,9 @@ require (
 	github.com/oekit/kitex v0.7.5
 	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.5
 	github.com/oekit/logx v0.8.2
-	github.com/oekit/logx/kitexlog v0.1.7
-	github.com/oekit/registry/nacos v0.1.2
-	github.com/oekit/registry/nacosimpl v0.1.3
+	github.com/oekit/logx/kitexlog v0.1.8
+	github.com/oekit/registry/nacos v0.1.3
+	github.com/oekit/registry/nacosimpl v0.1.4
 	github.com/oekit/tracing v0.3.2
 )
 
