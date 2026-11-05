@@ -2,6 +2,10 @@
 
 由 ekit v0.34.0（git.enjoye.top/enjoydream/ekit，冻结维护）拆分而来。所有 notable 变更记录如下。
 
+## [v0.1.27] — 2026-11-06
+
+- build: 矩阵依赖地板对齐（维护轮 #233）
+
 ## [v0.1.26] — 2026-11-02
 
 - 抬嵌套模块地板：bootstrap/nacos v0.3.8、bootstrap/obs v0.2.12、kitexotel v0.7.5（oekit/oekit#104）
