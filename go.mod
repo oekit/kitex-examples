@@ -81,7 +81,7 @@ require (
 	github.com/oekit/metrics v0.1.16 // indirect
 	github.com/oekit/nns v0.5.11 // indirect
 	github.com/oekit/pkg v0.38.0 // indirect
-	github.com/oekit/registry v0.5.7 // indirect
+	github.com/oekit/registry v0.5.9 // indirect
 	github.com/orcaman/concurrent-map v0.0.0-20210501183033-44dafcb38ecc // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.25.0 // indirect
