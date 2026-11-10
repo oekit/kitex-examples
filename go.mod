@@ -5,13 +5,13 @@ go 1.26.0
 require (
 	github.com/cloudwego/gopkg v0.2.1
 	github.com/cloudwego/kitex v0.16.4
-	github.com/oekit/bootstrap v0.7.3
+	github.com/oekit/bootstrap v0.7.4
 	github.com/oekit/bootstrap/nacos v0.3.22
 	github.com/oekit/bootstrap/obs v0.2.24
 	github.com/oekit/core v0.14.0
-	github.com/oekit/kitex v0.7.16
+	github.com/oekit/kitex v0.7.17
 	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.16
-	github.com/oekit/logx v0.9.1
+	github.com/oekit/logx v0.9.2
 	github.com/oekit/logx/kitexlog v0.1.11
 	github.com/oekit/registry/nacos v0.1.12
 	github.com/oekit/registry/nacosimpl v0.1.13
@@ -78,10 +78,10 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/nacos-group/nacos-sdk-go/v2 v2.3.6-0.20260601044846-0e3d1d099507 // indirect
 	github.com/oekit/concurrency v0.32.0 // indirect
-	github.com/oekit/metrics v0.2.2 // indirect
-	github.com/oekit/nns v0.5.16 // indirect
+	github.com/oekit/metrics v0.2.3 // indirect
+	github.com/oekit/nns v0.5.17 // indirect
 	github.com/oekit/pkg v0.42.0 // indirect
-	github.com/oekit/registry v0.5.12 // indirect
+	github.com/oekit/registry v0.5.13 // indirect
 	github.com/orcaman/concurrent-map v0.0.0-20210501183033-44dafcb38ecc // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.25.0 // indirect
