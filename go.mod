@@ -6,11 +6,11 @@ require (
 	github.com/cloudwego/gopkg v0.2.1
 	github.com/cloudwego/kitex v0.16.4
 	github.com/oekit/bootstrap v0.7.3
-	github.com/oekit/bootstrap/nacos v0.3.21
-	github.com/oekit/bootstrap/obs v0.2.23
+	github.com/oekit/bootstrap/nacos v0.3.22
+	github.com/oekit/bootstrap/obs v0.2.24
 	github.com/oekit/core v0.13.6
 	github.com/oekit/kitex v0.7.16
-	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.15
+	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.16
 	github.com/oekit/logx v0.9.1
 	github.com/oekit/logx/kitexlog v0.1.11
 	github.com/oekit/registry/nacos v0.1.12
