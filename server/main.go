@@ -36,9 +36,14 @@ type AppConfig struct {
 func main() {
 	cfg, err := config.LoadBootstrap[AppConfig]("dev")
 	if err != nil {
-		logx.Error("load config failed", "err", err)
+		logx.Error("load config failed", logx.ErrKey, err)
 		os.Exit(1)
 	}
+
+	// AGENTS 日志节硬规则（#112）：业务服务的包级 logx.* 全部经 Default()
+	// 输出——默认 logger 必须挂 service 字段，否则每条日志都无 service 归属。
+	// （下方 klog 桥接用的是独立 slog 实例，两条接线在此各自示范。）
+	logx.UseSlog(cfg.ServiceName)
 
 	b, err := bootstrap.New(
 		bootstrap.WithServiceName(cfg.ServiceName),
@@ -46,7 +51,7 @@ func main() {
 		bootstrapobs.WithTracing(cfg.Tracing),
 	)
 	if err != nil {
-		logx.Error("bootstrap init failed", "err", err)
+		logx.Error("bootstrap init failed", logx.ErrKey, err)
 		os.Exit(1)
 	}
 
@@ -89,7 +94,7 @@ func main() {
 		<-app.Context().Done()
 		return nil
 	}); err != nil {
-		logx.Error("server exited with error", "err", err)
+		logx.Error("server exited with error", logx.ErrKey, err)
 		os.Exit(1)
 	}
 }
