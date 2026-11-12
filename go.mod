@@ -5,10 +5,10 @@ go 1.26.0
 require (
 	github.com/cloudwego/gopkg v0.2.1
 	github.com/cloudwego/kitex v0.16.4
-	github.com/oekit/bootstrap v0.7.7
-	github.com/oekit/bootstrap/nacos v0.3.23
-	github.com/oekit/bootstrap/obs v0.2.25
-	github.com/oekit/core v0.14.2
+	github.com/oekit/bootstrap v0.7.8
+	github.com/oekit/bootstrap/nacos v0.3.24
+	github.com/oekit/bootstrap/obs v0.2.26
+	github.com/oekit/core v0.15.0
 	github.com/oekit/kitex v0.7.18
 	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.16
 	github.com/oekit/logx v0.10.0
