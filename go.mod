@@ -5,17 +5,17 @@ go 1.26.0
 require (
 	github.com/cloudwego/gopkg v0.2.1
 	github.com/cloudwego/kitex v0.16.4
-	github.com/oekit/bootstrap v0.7.6
-	github.com/oekit/bootstrap/nacos v0.3.22
-	github.com/oekit/bootstrap/obs v0.2.24
+	github.com/oekit/bootstrap v0.7.7
+	github.com/oekit/bootstrap/nacos v0.3.23
+	github.com/oekit/bootstrap/obs v0.2.25
 	github.com/oekit/core v0.14.2
 	github.com/oekit/kitex v0.7.18
 	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.16
-	github.com/oekit/logx v0.9.2
-	github.com/oekit/logx/kitexlog v0.1.11
-	github.com/oekit/registry/nacos v0.1.13
-	github.com/oekit/registry/nacosimpl v0.1.14
-	github.com/oekit/tracing v0.4.0
+	github.com/oekit/logx v0.10.0
+	github.com/oekit/logx/kitexlog v0.1.12
+	github.com/oekit/registry/nacos v0.1.14
+	github.com/oekit/registry/nacosimpl v0.2.0
+	github.com/oekit/tracing v0.4.1
 )
 
 require (
@@ -76,12 +76,12 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
-	github.com/nacos-group/nacos-sdk-go/v2 v2.3.6-0.20260601044846-0e3d1d099507 // indirect
-	github.com/oekit/concurrency v0.33.0 // indirect
-	github.com/oekit/metrics v0.2.4 // indirect
-	github.com/oekit/nns v0.6.0 // indirect
-	github.com/oekit/pkg v0.44.0 // indirect
-	github.com/oekit/registry v0.5.14 // indirect
+	github.com/nacos-group/nacos-sdk-go/v2 v2.3.6 // indirect
+	github.com/oekit/concurrency v0.34.0 // indirect
+	github.com/oekit/metrics v0.3.0 // indirect
+	github.com/oekit/nns v0.8.0 // indirect
+	github.com/oekit/pkg v0.46.0 // indirect
+	github.com/oekit/registry v0.5.15 // indirect
 	github.com/orcaman/concurrent-map v0.0.0-20210501183033-44dafcb38ecc // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.25.0 // indirect
