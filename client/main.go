@@ -29,9 +29,14 @@ type AppConfig struct {
 func main() {
 	cfg, err := config.LoadBootstrap[AppConfig]("dev")
 	if err != nil {
-		logx.Error("load config failed", "err", err)
+		logx.Error("load config failed", logx.ErrKey, err)
 		os.Exit(1)
 	}
+
+	// AGENTS 日志节硬规则（#112）：业务服务的包级 logx.* 全部经 Default()
+	// 输出——默认 logger 必须挂 service 字段，否则每条日志都无 service 归属。
+	// （下方 klog 桥接用的是独立 slog 实例，两条接线在此各自示范。）
+	logx.UseSlog(cfg.ServiceName)
 
 	// 1. 日志桥接（必须传 slog 实例避免无限递归）
 	// kitex.NewLogger 已弃用（v0.x 起桥接至 logx/kitexlog），示例直接用新 API
@@ -40,12 +45,12 @@ func main() {
 	// 2. 创建 Nacos naming client → ekit Discoverer → Kitex Resolver
 	namingCli, err := nacos.NewNamingClient(cfg.Nacos)
 	if err != nil {
-		logx.Error("create naming client failed", "err", err)
+		logx.Error("create naming client failed", logx.ErrKey, err)
 		os.Exit(1)
 	}
 	disc, err := nacosimpl.NewDiscoverer(namingCli)
 	if err != nil {
-		logx.Error("create discoverer failed", "err", err)
+		logx.Error("create discoverer failed", logx.ErrKey, err)
 		os.Exit(1)
 	}
 
@@ -55,7 +60,7 @@ func main() {
 		client.WithSuite(kitexotel.NewClientTracingSuite()),
 	)
 	if err != nil {
-		logx.Error("create client failed", "err", err)
+		logx.Error("create client failed", logx.ErrKey, err)
 		os.Exit(1)
 	}
 
@@ -64,7 +69,7 @@ func main() {
 		Message: "hello from ekit",
 	})
 	if err != nil {
-		logx.Error("echo call failed", "err", err)
+		logx.Error("echo call failed", logx.ErrKey, err)
 		os.Exit(1)
 	}
 
