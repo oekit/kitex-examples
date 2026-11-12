@@ -15,7 +15,7 @@ require (
 	github.com/oekit/logx/kitexlog v0.1.12
 	github.com/oekit/registry/nacos v0.1.14
 	github.com/oekit/registry/nacosimpl v0.2.0
-	github.com/oekit/tracing v0.4.1
+	github.com/oekit/tracing v0.4.2
 )
 
 require (
