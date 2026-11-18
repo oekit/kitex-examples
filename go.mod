@@ -8,7 +8,7 @@ require (
 	github.com/oekit/bootstrap v0.7.14
 	github.com/oekit/bootstrap/nacos v0.3.25
 	github.com/oekit/bootstrap/obs v0.2.26
-	github.com/oekit/core v0.17.0
+	github.com/oekit/core v0.17.1
 	github.com/oekit/kitex v0.8.5
 	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.16
 	github.com/oekit/logx v0.12.0
@@ -81,7 +81,7 @@ require (
 	github.com/oekit/metrics v0.4.2 // indirect
 	github.com/oekit/nns v0.9.3 // indirect
 	github.com/oekit/pkg v0.55.0 // indirect
-	github.com/oekit/registry v0.8.0 // indirect
+	github.com/oekit/registry v0.8.1 // indirect
 	github.com/orcaman/concurrent-map v0.0.0-20210501183033-44dafcb38ecc // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.25.0 // indirect
