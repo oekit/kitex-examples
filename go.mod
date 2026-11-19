@@ -8,7 +8,7 @@ require (
 	github.com/oekit/bootstrap v0.7.14
 	github.com/oekit/bootstrap/nacos v0.3.25
 	github.com/oekit/bootstrap/obs v0.2.26
-	github.com/oekit/core v0.17.1
+	github.com/oekit/core v0.17.2
 	github.com/oekit/kitex v0.8.6
 	github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.16
 	github.com/oekit/logx v0.12.0
