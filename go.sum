@@ -218,8 +218,8 @@ github.com/oekit/bootstrap/nacos v0.3.25 h1:37H87omcUoHR9Yhsca9Bf3gZrD39pwvn33Ne
 github.com/oekit/bootstrap/nacos v0.3.25/go.mod h1:2sKBqwKDjBBPkfSCnph6yk/MHrPbnxYXhapF1bt70aA=
 github.com/oekit/bootstrap/obs v0.2.26 h1:YEZUH2BIBxwm2wM34nP911yGdOJxpP62xK1Jrxo97nQ=
 github.com/oekit/bootstrap/obs v0.2.26/go.mod h1:QHCNcn154ENjGFhddJleGqxI+ZDM0fbCxhy9AU8dBnc=
-github.com/oekit/concurrency v0.39.1 h1:FltEJ9wpWgY0rCv+DOvgCWWbEqEON3VzF+hzfFkTFD0=
-github.com/oekit/concurrency v0.39.1/go.mod h1:jKGzLDddMiGX+h+oUx9flZ5chQLRdEx39OW6WICyObI=
+github.com/oekit/concurrency v0.39.2 h1:tOFZjnMbOqGCDUur0VXtxwq+Wtrg14AOkxW7HeP89FE=
+github.com/oekit/concurrency v0.39.2/go.mod h1:IU/QoYzPQpJf+Y7wtCR5mr0frEk647oF9bQ0cVDmE8E=
 github.com/oekit/core v0.17.1 h1:2NWRQ71xTV85He25918pA5jC9m7I3KTUcRraape+rpY=
 github.com/oekit/core v0.17.1/go.mod h1:yqQavw6Ti+YFiO3Q3TsOBLpKN7yyrK1Fti4Ci5Gi+Nc=
 github.com/oekit/kitex v0.8.6 h1:S567kitA/9GXsKU0058NNRjdVYZETQuDJNRc7hUqpPI=
