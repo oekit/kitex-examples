@@ -21,9 +21,24 @@ go get github.com/oekit/kitex-examples@v0.1.31
 ```bash
 git clone https://github.com/oekit/kitex-examples
 cd kitex-examples
-go run ./server   # mock 模式无需 Nacos
-go run ./client
+go run ./server   # mock 模式：etc/config-dev.yaml 的 nacos.addr 留空即无需 Nacos
+go run ./client   # 直连 target_addr（缺省 127.0.0.1:8888）
 ```
+
+两种模式（切换 `etc/config-dev.yaml`）：
+
+| 模式 | 判据 | server | client |
+|---|---|---|---|
+| **mock（缺省）** | `nacos.addr` 为空 | 不接注册中心、纯本地监听 `rpc_port` | `client.WithHostPorts(target_addr)` 直连 |
+| 真实 | `nacos.addr` 填写（如 `127.0.0.1:8848`） | `bootstrap/nacos` 延迟注册（Ready 后才进注册中心） | NNS 服务发现（`registrykitex.NewResolver`） |
+
+## 治理配置样例
+
+`configs/{retry,rpc_timeout,limit}.json` 是**治理策略模板**（尚未在示例中接线）：
+真实接入需用 `kitex.NewGovernanceConfig(configClient)` 订阅对应 dataID 后经
+`NewServerSuite` 挂到 server——dataID 命名遵循 `{server}.{category}` 模板
+（见 `kitex.GovernanceConfig` godoc），把本目录 JSON 发布到 Nacos 对应 dataID 即生效。
+示例为保持 mock 可运行未默认接线，直接改这里不会生效。
 
 ## 边界
 

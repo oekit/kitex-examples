@@ -22,6 +22,7 @@ import (
 type AppConfig struct {
 	ServiceName  string          `yaml:"service_name"`
 	TargetServer string          `yaml:"target_server"`
+	TargetAddr   string          `yaml:"target_addr"` // mock 模式直连地址
 	Nacos        nacos.Bootstrap `yaml:"nacos"`
 	Tracing      tracing.Config  `yaml:"tracing"`
 }
@@ -42,23 +43,35 @@ func main() {
 	// kitex.NewLogger 已弃用（v0.x 起桥接至 logx/kitexlog），示例直接用新 API
 	klog.SetLogger(kitexlog.NewLogger(logx.NewSlogLogger(cfg.ServiceName)))
 
-	// 2. 创建 Nacos naming client → ekit Discoverer → Kitex Resolver
-	namingCli, err := nacos.NewNamingClient(cfg.Nacos)
+	// 2. 初始化 tracing（#175：此前挂 ClientTracingSuite 但从不 Init——OTel
+	// 全局 provider 为 noop，client span 静默丢弃）。
+	prov, err := tracing.Init(cfg.Tracing)
 	if err != nil {
-		logx.Error("create naming client failed", logx.ErrKey, err)
+		logx.Error("tracing init failed", logx.ErrKey, err)
 		os.Exit(1)
 	}
-	disc, err := nacosimpl.NewDiscoverer(namingCli)
-	if err != nil {
-		logx.Error("create discoverer failed", logx.ErrKey, err)
-		os.Exit(1)
+	defer func() { _ = prov.Shutdown(context.Background()) }()
+
+	// 3. 创建 Kitex client（mock 直连 / NNS 发现二选一）
+	co := []client.Option{client.WithSuite(kitexotel.NewClientTracingSuite())}
+	if cfg.Nacos.Addr == "" {
+		logx.Info("mock 模式：nacos.addr 为空——直连 target_addr", "addr", cfg.TargetAddr)
+		co = append(co, client.WithHostPorts(cfg.TargetAddr))
+	} else {
+		namingCli, err := nacos.NewNamingClient(cfg.Nacos)
+		if err != nil {
+			logx.Error("create naming client failed", logx.ErrKey, err)
+			os.Exit(1)
+		}
+		disc, err := nacosimpl.NewDiscoverer(namingCli)
+		if err != nil {
+			logx.Error("create discoverer failed", logx.ErrKey, err)
+			os.Exit(1)
+		}
+		co = append(co, client.WithResolver(registrykitex.NewResolver(disc)))
 	}
 
-	// 3. 创建 Kitex client（带服务发现 + 可观测性）
-	cli, err := echoservice.NewClient(cfg.TargetServer,
-		client.WithResolver(registrykitex.NewResolver(disc)),
-		client.WithSuite(kitexotel.NewClientTracingSuite()),
-	)
+	cli, err := echoservice.NewClient(cfg.TargetServer, co...)
 	if err != nil {
 		logx.Error("create client failed", logx.ErrKey, err)
 		os.Exit(1)
