@@ -222,8 +222,8 @@ github.com/oekit/concurrency v0.40.0 h1:gFwginpsVXdY4R/hzwicyBa2u1WHmCN1h5Bw6ztl
 github.com/oekit/concurrency v0.40.0/go.mod h1:nnPMxDuUq8H9ZrqhsRpGY2n1FMAL0Jio2MZRPKlPeJo=
 github.com/oekit/core v0.18.0 h1:NMRR5wwmDJvlQJSDTx9ppUt+EUhdVavDTue4/UiQLpE=
 github.com/oekit/core v0.18.0/go.mod h1:1GqGty9VMvHqtrxgxmXiCcVRN4jy9QVLbr/ifVWHeaA=
-github.com/oekit/kitex v0.9.0 h1:BabQuEw46o/qZP4UwOqBwwYNAyAJtTCb69A5qnagau8=
-github.com/oekit/kitex v0.9.0/go.mod h1:P4uRWYh9asfrLMn77o14+Pcog/CmPYF+E+yaFQ8mJtw=
+github.com/oekit/kitex v0.10.0 h1:jr5bVSPrTXwbsczSGlGciNdqiVl9CYH5Q3OgXsS2iaM=
+github.com/oekit/kitex v0.10.0/go.mod h1:P4uRWYh9asfrLMn77o14+Pcog/CmPYF+E+yaFQ8mJtw=
 github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.17 h1:EBzieAuf87kgBEpDk1fvytODmd/bEaJhGLdtSBk8yIM=
 github.com/oekit/kitex/observability/tracing/instrumentation/kitexotel v0.7.17/go.mod h1:eE/vSwjugZAX5lLCImvM6JK+MtRDOK+qRLyAeD/hXsk=
 github.com/oekit/logx v0.12.1 h1:7vYBKiImDcCDqEXwl8BrQSp29MvFSBUOWFTPm33fw8s=
