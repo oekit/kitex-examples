@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 
 	"github.com/oekit/core/config"
@@ -22,15 +23,24 @@ import (
 type AppConfig struct {
 	ServiceName  string          `yaml:"service_name"`
 	TargetServer string          `yaml:"target_server"`
+	TargetAddr   string          `yaml:"target_addr"` // mock 模式直连地址
 	Nacos        nacos.Bootstrap `yaml:"nacos"`
 	Tracing      tracing.Config  `yaml:"tracing"`
 }
 
 func main() {
+	// run() 返回错误再统一退出：tracing provider 的 defer Shutdown 必须
+	// 真正执行（gocritic exitAfterDefer），错误路径也不在深栈里散落 os.Exit。
+	if err := run(); err != nil {
+		logx.Error("client exited with error", logx.ErrKey, err)
+		os.Exit(1)
+	}
+}
+
+func run() error {
 	cfg, err := config.LoadBootstrap[AppConfig]("dev")
 	if err != nil {
-		logx.Error("load config failed", logx.ErrKey, err)
-		os.Exit(1)
+		return fmt.Errorf("load config: %w", err)
 	}
 
 	// AGENTS 日志节硬规则（#112）：业务服务的包级 logx.* 全部经 Default()
@@ -42,26 +52,34 @@ func main() {
 	// kitex.NewLogger 已弃用（v0.x 起桥接至 logx/kitexlog），示例直接用新 API
 	klog.SetLogger(kitexlog.NewLogger(logx.NewSlogLogger(cfg.ServiceName)))
 
-	// 2. 创建 Nacos naming client → ekit Discoverer → Kitex Resolver
-	namingCli, err := nacos.NewNamingClient(cfg.Nacos)
+	// 2. 初始化 tracing（#175：此前挂 ClientTracingSuite 但从不 Init——OTel
+	// 全局 provider 为 noop，client span 静默丢弃）。
+	prov, err := tracing.Init(cfg.Tracing)
 	if err != nil {
-		logx.Error("create naming client failed", logx.ErrKey, err)
-		os.Exit(1)
+		return fmt.Errorf("tracing init: %w", err)
 	}
-	disc, err := nacosimpl.NewDiscoverer(namingCli)
-	if err != nil {
-		logx.Error("create discoverer failed", logx.ErrKey, err)
-		os.Exit(1)
+	defer func() { _ = prov.Shutdown(context.Background()) }()
+
+	// 3. 创建 Kitex client（mock 直连 / NNS 发现二选一）
+	co := []client.Option{client.WithSuite(kitexotel.NewClientTracingSuite())}
+	if cfg.Nacos.Addr == "" {
+		logx.Info("mock 模式：nacos.addr 为空——直连 target_addr", "addr", cfg.TargetAddr)
+		co = append(co, client.WithHostPorts(cfg.TargetAddr))
+	} else {
+		namingCli, nerr := nacos.NewNamingClient(cfg.Nacos)
+		if nerr != nil {
+			return fmt.Errorf("create naming client: %w", nerr)
+		}
+		disc, derr := nacosimpl.NewDiscoverer(namingCli)
+		if derr != nil {
+			return fmt.Errorf("create discoverer: %w", derr)
+		}
+		co = append(co, client.WithResolver(registrykitex.NewResolver(disc)))
 	}
 
-	// 3. 创建 Kitex client（带服务发现 + 可观测性）
-	cli, err := echoservice.NewClient(cfg.TargetServer,
-		client.WithResolver(registrykitex.NewResolver(disc)),
-		client.WithSuite(kitexotel.NewClientTracingSuite()),
-	)
+	cli, err := echoservice.NewClient(cfg.TargetServer, co...)
 	if err != nil {
-		logx.Error("create client failed", logx.ErrKey, err)
-		os.Exit(1)
+		return fmt.Errorf("create client: %w", err)
 	}
 
 	// 4. 调用
@@ -69,9 +87,9 @@ func main() {
 		Message: "hello from ekit",
 	})
 	if err != nil {
-		logx.Error("echo call failed", logx.ErrKey, err)
-		os.Exit(1)
+		return fmt.Errorf("echo call: %w", err)
 	}
 
 	logx.Info("response received", "message", resp.Message, "timestamp", resp.Timestamp)
+	return nil
 }

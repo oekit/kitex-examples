@@ -45,11 +45,19 @@ func main() {
 	// （下方 klog 桥接用的是独立 slog 实例，两条接线在此各自示范。）
 	logx.UseSlog(cfg.ServiceName)
 
-	b, err := bootstrap.New(
+	// mock 模式（#175）：nacos.addr 为空即不连注册中心——README 承诺的
+	// 「无需 Nacos 直接跑」由此成立；填了 addr 才注入 NNS 组件。
+	mock := cfg.Nacos.Addr == ""
+	bo := []bootstrap.BootstrapperOption{
 		bootstrap.WithServiceName(cfg.ServiceName),
-		bootstrapnacos.WithNNS(cfg.Nacos, cfg.RpcPort, nil), // Nacos 注册（嵌套 module 按需注入）
 		bootstrapobs.WithTracing(cfg.Tracing),
-	)
+	}
+	if mock {
+		logx.Info("mock 模式：nacos.addr 为空——跳过注册中心（纯本地运行）")
+	} else {
+		bo = append(bo, bootstrapnacos.WithNNS(cfg.Nacos, cfg.RpcPort, nil)) // Nacos 注册（嵌套 module 按需注入）
+	}
+	b, err := bootstrap.New(bo...)
 	if err != nil {
 		logx.Error("bootstrap init failed", logx.ErrKey, err)
 		os.Exit(1)
@@ -60,25 +68,27 @@ func main() {
 		// kitex.NewLogger 已弃用（v0.x 起桥接至 logx/kitexlog），示例直接用新 API
 		klog.SetLogger(kitexlog.NewLogger(logx.NewSlogLogger(cfg.ServiceName)))
 
-		// 2. 创建 Nacos naming client → ekit Registrar → Kitex Registry
-		namingCli, err := nacos.NewNamingClient(cfg.Nacos)
-		if err != nil {
-			return err
-		}
-		reg, err := nacosimpl.NewRegistrar(namingCli)
-		if err != nil {
-			return err
-		}
-
-		// 3. 创建 Kitex server
+		// 3. 创建 Kitex server（mock 模式下不接注册中心）
 		// 真 codegen:业务实现 EchoService 接口(见下方 echoHandler)
 		handler := &echoHandler{}
 		addr := &net.TCPAddr{IP: net.ParseIP("0.0.0.0"), Port: cfg.RpcPort}
-		svr := echoservice.NewServer(handler,
-			server.WithRegistry(registrykitex.NewRegistry(reg)),
+		srvOpts := []server.Option{
 			server.WithServiceAddr(addr),
 			server.WithSuite(kitexotel.NewServerTracingSuite()),
-		)
+		}
+		if !mock {
+			// 2. 创建 Nacos naming client → ekit Registrar → Kitex Registry
+			namingCli, err := nacos.NewNamingClient(cfg.Nacos)
+			if err != nil {
+				return err
+			}
+			reg, err := nacosimpl.NewRegistrar(namingCli)
+			if err != nil {
+				return err
+			}
+			srvOpts = append(srvOpts, server.WithRegistry(registrykitex.NewRegistry(reg)))
+		}
+		svr := echoservice.NewServer(handler, srvOpts...)
 
 		// 4. 注册到 bootstrap 生命周期
 		// WithOnReady + WithReadyAddr：TCP 探活通过后触发 app.Ready()——

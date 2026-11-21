@@ -1,0 +1,21 @@
+# kitex-examples 示例配置（server 与 client 共用一份；各自未用到的键会被忽略）
+#
+# mock 模式（缺省）：nacos.addr 留空——不连任何注册中心，server/client
+# 本地直连即可跑通（go run ./server + go run ./client）。
+# 真实模式：nacos.addr 填 Nacos 地址（如 127.0.0.1:8848），server 走
+# bootstrap/nacos 延迟注册、client 走 NNS 服务发现。
+service_name: kitex-echo-demo
+rpc_port: 8888
+target_server: kitex-echo-demo
+target_addr: 127.0.0.1:8888     # mock 模式下 client 直连地址
+
+nacos:
+  addr: ""                      # 留空 = mock；例：nacos.example:8848
+  context_path: /nacos
+  namespace_id: ""
+  group: DEFAULT_GROUP
+  service_name: kitex-echo-demo
+
+tracing:
+  servicename: kitex-echo-demo  # 必填（空值 Init fail-fast）；export 端点留空 = 仅本地 provider
+  endpoint: ""
