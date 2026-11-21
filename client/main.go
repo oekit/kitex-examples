@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"os"
 
 	"github.com/oekit/core/config"
@@ -28,10 +29,18 @@ type AppConfig struct {
 }
 
 func main() {
+	// run() 返回错误再统一退出：tracing provider 的 defer Shutdown 必须
+	// 真正执行（gocritic exitAfterDefer），错误路径也不在深栈里散落 os.Exit。
+	if err := run(); err != nil {
+		logx.Error("client exited with error", logx.ErrKey, err)
+		os.Exit(1)
+	}
+}
+
+func run() error {
 	cfg, err := config.LoadBootstrap[AppConfig]("dev")
 	if err != nil {
-		logx.Error("load config failed", logx.ErrKey, err)
-		os.Exit(1)
+		return fmt.Errorf("load config: %w", err)
 	}
 
 	// AGENTS 日志节硬规则（#112）：业务服务的包级 logx.* 全部经 Default()
@@ -47,8 +56,7 @@ func main() {
 	// 全局 provider 为 noop，client span 静默丢弃）。
 	prov, err := tracing.Init(cfg.Tracing)
 	if err != nil {
-		logx.Error("tracing init failed", logx.ErrKey, err)
-		os.Exit(1)
+		return fmt.Errorf("tracing init: %w", err)
 	}
 	defer func() { _ = prov.Shutdown(context.Background()) }()
 
@@ -58,23 +66,20 @@ func main() {
 		logx.Info("mock 模式：nacos.addr 为空——直连 target_addr", "addr", cfg.TargetAddr)
 		co = append(co, client.WithHostPorts(cfg.TargetAddr))
 	} else {
-		namingCli, err := nacos.NewNamingClient(cfg.Nacos)
-		if err != nil {
-			logx.Error("create naming client failed", logx.ErrKey, err)
-			os.Exit(1)
+		namingCli, nerr := nacos.NewNamingClient(cfg.Nacos)
+		if nerr != nil {
+			return fmt.Errorf("create naming client: %w", nerr)
 		}
-		disc, err := nacosimpl.NewDiscoverer(namingCli)
-		if err != nil {
-			logx.Error("create discoverer failed", logx.ErrKey, err)
-			os.Exit(1)
+		disc, derr := nacosimpl.NewDiscoverer(namingCli)
+		if derr != nil {
+			return fmt.Errorf("create discoverer: %w", derr)
 		}
 		co = append(co, client.WithResolver(registrykitex.NewResolver(disc)))
 	}
 
 	cli, err := echoservice.NewClient(cfg.TargetServer, co...)
 	if err != nil {
-		logx.Error("create client failed", logx.ErrKey, err)
-		os.Exit(1)
+		return fmt.Errorf("create client: %w", err)
 	}
 
 	// 4. 调用
@@ -82,9 +87,9 @@ func main() {
 		Message: "hello from ekit",
 	})
 	if err != nil {
-		logx.Error("echo call failed", logx.ErrKey, err)
-		os.Exit(1)
+		return fmt.Errorf("echo call: %w", err)
 	}
 
 	logx.Info("response received", "message", resp.Message, "timestamp", resp.Timestamp)
+	return nil
 }
