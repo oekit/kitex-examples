@@ -2,6 +2,14 @@
 
 由 ekit v0.34.0（git.enjoye.top/enjoydream/ekit，冻结维护）拆分而来。所有 notable 变更记录如下。
 
+## [v0.1.32] — 2026-11-21
+
+- - fix: 示例补 etc/config-dev.yaml，按 nacos.addr 空/非空分 mock/真实双模式（mock 跳过 NNS 组件与注册接线、client 直连 target_addr）——README 承诺的「无需 Nacos 直接跑」兑现（#175）
+- fix: client 补 tracing.Init + run() error 结构（provider Shutdown defer 真正执行）——ClientTracingSuite 的 span 不再随 noop provider 静默丢弃（#175）
+- docs: README 运行段改双模式表；治理 JSON 明确为未接线模板（dataID 命名+接法指引）（#175）
+
+关联问题单：kitex-examples#175。
+
 ## [v0.1.31] — 2026-11-18
 
 - build: 矩阵依赖地板对齐(pkg v0.53.0/concurrency v0.39.0/registry v0.7.0 等)
